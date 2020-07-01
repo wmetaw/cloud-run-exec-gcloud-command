@@ -19,7 +19,7 @@ steps:
   # Cloud Run閲覧権限付与
   - name: 'gcr.io/cloud-builders/gcloud'
     id: 'apply-member-role-cloud-run'
-    args: ['run', 'services', 'add-iam-policy-binding', '${_SERVICE_NAME}', '--region', '${_REGION}', '--member', 'allUsers', '--role', 'roles/run.invoker']
+    args: ['run', 'services', 'add-iam-policy-binding', '${_SERVICE_NAME}', '--region', '${_REGION}', '--member', 'allUsers', '--role', 'roles/run.invoker', '--platform', 'managed']
 
 # 変数定義
 # see https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values?hl=ja
