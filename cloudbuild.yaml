@@ -11,9 +11,10 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}']
 
   # Cloud Runへデプロイ
+  # --platformはmanaged,gke,kubernetesのいずれかを指定 see https://cloud.google.com/sdk/gcloud/reference/beta/run/deploy
   - name: 'gcr.io/cloud-builders/gcloud'
     id: 'deploy-cloud-run'
-    args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '--region', '${_REGION}']
+    args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '--region', '${_REGION}', '--platform', 'managed']
 
 # 変数定義
 # see https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values?hl=ja
